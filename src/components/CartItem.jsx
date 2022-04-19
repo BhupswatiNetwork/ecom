@@ -1,5 +1,3 @@
-import React from "react";
-
 const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart }) => {
   const handleCartSubQty = () => {
     if (item.quantity > 1) {
@@ -26,14 +24,14 @@ const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart }) => {
           </p>
           <div className='flex space-x-2 items-center justify-center'>
             <button
-              className='text-2xl font-semibold'
+              className='text-2xl font-semibold active:scale-75'
               onClick={handleCartSubQty}
             >
               -
             </button>
             <p className='font-bold bg-orange-200 px-2'>{item.quantity}</p>
             <button
-              className='text-2xl font-semibold'
+              className='text-2xl font-semibold active:scale-75'
               onClick={() => onUpdateCartQty(item.id, item.quantity + 1)}
             >
               +
@@ -41,7 +39,7 @@ const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart }) => {
           </div>
         </div>
         <button
-          className='bg-red-600 px-1 py-0.5 text-white rounded'
+          className='bg-red-600 px-1 py-0.5 text-white rounded active:scale-75'
           onClick={() => onRemoveFromCart(item.id)}
         >
           Remove item

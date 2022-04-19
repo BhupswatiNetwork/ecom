@@ -2,8 +2,7 @@ import eye from "../assets/eye.svg";
 import addToCart from "../assets/add-to-cart.svg";
 import { Link } from "react-router-dom";
 
-const Product = ({ product, onAddToCart }) => {
-  // const handleAddToCart = () => onAddToCart(product.id, 1);
+const Product = ({ product, onAddToCart, page }) => {
   return (
     <div className='flex flex-col items-center'>
       <div className='content'>
@@ -14,17 +13,21 @@ const Product = ({ product, onAddToCart }) => {
         />
         <div className='overlay'>
           <div className='overlay-content flex space-x-3'>
-            <Link to='/'>
-              <img src={eye} alt='view product' className='h-8 w-auto' />
+            <Link to={page ? product.id : `../${product.id}`}>
+              <img
+                src={eye}
+                alt='view product'
+                className='h-8 w-auto active:scale-75'
+              />
             </Link>
             <div
               onClick={() => onAddToCart(product.id, 1)}
-              className='cursor-pointer'
+              className='cursor-pointer '
             >
               <img
                 src={addToCart}
                 alt='add product to cart'
-                className='h-8 w-auto'
+                className='h-8 w-auto active:scale-75'
               />
             </div>
           </div>

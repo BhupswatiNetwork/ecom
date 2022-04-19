@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Men from "./pages/Men";
 import Women from "./pages/Women";
 import Kids from "./pages/Kids";
+import ProductDetail from "./pages/ProductDetail";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -79,6 +80,7 @@ function App() {
   return (
     <div className='App'>
       <Navbar cartLength={!cart ? 0 : cart.line_items.length} />
+
       <Routes>
         <Route
           path='/'
@@ -95,6 +97,10 @@ function App() {
           element={<Shop products={products} onAddToCart={handleAddToCart} />}
         />
         <Route
+          path='/:id'
+          element={<ProductDetail onAddToCart={handleAddToCart} />}
+        />
+        <Route
           path='/cart'
           element={
             <Cart
@@ -105,7 +111,10 @@ function App() {
             />
           }
         />
-        <Route path='/checkout' element={<Checkout />} />
+        <Route
+          path='/checkout'
+          element={<Checkout cart={cart} order={order} error={errorMessage} />}
+        />
       </Routes>
     </div>
   );

@@ -29,22 +29,25 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
               </h4>
               <div className='space-x-4'>
                 <button
-                  className='bg-red-600 px-1 py-0.5 text-white rounded'
+                  className='bg-red-600 px-1 py-0.5 text-white rounded active:scale-75'
                   onClick={onEmptyCart}
                 >
                   Empty Cart
                 </button>
-                <button className='bg-green-600 px-1 py-0.5 text-white rounded'>
+                <Link
+                  to='/checkout'
+                  className='bg-green-600 px-1 py-0.5 text-white rounded active:scale-75'
+                >
                   Checkout
-                </button>
+                </Link>
               </div>
             </div>
           </div>
         ) : (
           <div>
             <h2 className='font-semibold text-lg'>Cart is Empty</h2>
-            <Link to='/shop'>
-              <button className='text-orange-500'>Continue Shopping</button>
+            <Link to='/shop' className='text-orange-500 '>
+              Continue Shopping
             </Link>
           </div>
         )}
